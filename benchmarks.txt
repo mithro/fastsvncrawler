@@ -1,0 +1,44 @@
+Comparison of svn-crawler with native SVN.
+
+$ svn --version
+svn, version 1.6.17 (r1128011)
+   compiled Nov 20 2011, 01:10:33
+...
+
+$ time svn ls --depth infinity http://svn.apache.org/repos/asf/subversion/trunk
+...
+
+real    1m17.487s
+user    0m0.476s
+sys     0m0.112s
+
+
+$ time svn-crawler http://svn.apache.org/repos/asf/subversion/trunk
+...
+real    0m3.836s
+user    0m0.184s
+sys     0m0.060s
+
+$ time svn ls --depth infinity http://svn.svnkit.com/repos/svnkit
+...
+real    2m12.392s
+user    0m0.448s
+sys     0m0.064s
+
+$ time svn-crawler http://svn.svnkit.com/repos/svnkit/trunk
+...
+real    0m18.712s
+user    0m0.184s
+sys     0m0.028s
+
+$ time svn ls --depth infinity http://svn.sqljet.com/repos/sqljet/branches/1.0.x
+...
+real    1m23.513s
+user    0m0.276s
+sys     0m0.052s
+
+$ time svn-crawler http://svn.sqljet.com/repos/sqljet/branches/1.0.x
+...
+real    0m5.916s
+user    0m0.100s
+sys     0m0.028s
